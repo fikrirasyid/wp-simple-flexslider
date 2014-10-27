@@ -22,7 +22,7 @@ if (!defined('WP_SIMPLE_FLEXSLIDER_URL'))
  * Requiring external files
  */
 require_once( 'includes/class-wp-simple-flexslider-editor.php' );
-// require_once( 'includes/class-wp-simple-flexslider-frontend.php' );
+require_once( 'includes/class-wp-simple-flexslider-frontend.php' );
 
 /**
  * Setup plugin
