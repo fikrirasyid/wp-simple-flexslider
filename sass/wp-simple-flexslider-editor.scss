@@ -2,6 +2,14 @@
 @import "mixins";
 
 // Styling
+#slideshow-shortcode-metabox{
+	pre{
+		background: #fafafa;
+		border: 1px solid #efefef;
+		padding: 10px;
+	}
+}
+
 #slideshow-metabox{
 	.inside{
 		padding: 15px 10px 10px;

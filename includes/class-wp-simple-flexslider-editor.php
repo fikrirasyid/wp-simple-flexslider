@@ -57,7 +57,34 @@ class WP_Simple_Flexslider_Editor{
 	 * @return void
 	 */
 	public function register_meta_box(){
-		add_meta_box('slideshow-metabox', __( 'Slideshow', 'wp-simple-flexslider' ), array( $this, 'display_meta_box' ), 'wp_simple_flexslider' );
+		global $post;
+
+		if( 'wp_simple_flexslider' == $post->post_type ){
+
+			if( 'publish' == $post->post_status ){
+				add_meta_box('slideshow-shortcode-metabox', __( 'Slideshow Shortcode', 'wp-simple-flexslider' ), array( $this, 'display_meta_box_shortcode' ), 'wp_simple_flexslider' );
+			}
+
+			add_meta_box('slideshow-metabox', __( 'Slideshow', 'wp-simple-flexslider' ), array( $this, 'display_meta_box' ), 'wp_simple_flexslider' );
+		}
+	}
+
+	/**
+	 * Displaying shortcode for slideshow which can be used on the post area
+	 * 
+	 * @access public
+	 * @since 0.1
+	 * @return void
+	 */
+	public function display_meta_box_shortcode () {
+		global $post;
+
+		if( 'publish' == $post->post_status ):
+			?>
+			<p><?php _e( 'Copy and paste shortcode below on your post editor to display it on the content section', 'wp-simple-flexslider' ); ?></p>
+			<pre>[wp_simple_flexslider id="<?php echo intval( $post->ID ); ?>"]</pre>
+			<?php
+		endif;
 	}
 
 	/**
