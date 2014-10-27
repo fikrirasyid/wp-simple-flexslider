@@ -111,7 +111,13 @@ class WP_Simple_Flexslider_Editor{
 
 							<div class="wp-simple-flexslider-slide-actions">
 								<div class="wp-simple-flexslider-inside">
+									<input type="text" name="slideshow[<?php echo $slide_id; ?>][slide_url]" class="input-text wp-simple-flexslider-slide-url" placeholder="http://" value="<?php echo ( isset( $slide['slide_url'] ) ? esc_attr( $slide['slide_url'] ) : '' ); ?>">
 									<textarea name="slideshow[<?php echo $slide_id; ?>][slide_caption]" class="input-text wp-simple-flexslider-slide-caption" placeholder="<?php _e( 'Describe this slide', 'wp-simple-flexslider' ); ?>"><?php echo ( isset( $slide['slide_caption'] ) ? esc_attr( $slide['slide_caption'] ) : '' ); ?></textarea>
+									<p class="wp-simple-flexslider-slide-target-blank-wrap">
+										<label for="slideshow_<?php echo $slide_id; ?>_target_blank">
+											<input id="slideshow_<?php echo $slide_id; ?>_target_blank" type="checkbox" name="slideshow[<?php echo $slide_id; ?>][slide_target_blank]" class="wp-simple-flexslider-slide-target-blank" value="1" <?php echo ( isset( $slide['slide_target_blank'] ) && '1' == $slide['slide_target_blank'] ? 'checked="checked"' : '' ); ?>> <?php _e( 'Open link in new tab', 'wp-simple-flexslider' ); ?>
+										</label>
+									</p>
 									<a href="#" class="wp-simple-flexslider-slide-remove button"><?php _e( 'Remove', 'wp-simple-flexslider' ); ?></a>
 								</div>
 							</div>
@@ -147,7 +153,14 @@ class WP_Simple_Flexslider_Editor{
 
 					<div class="wp-simple-flexslider-slide-actions">
 						<div class="wp-simple-flexslider-inside">
+							<input type="text" name="slideshow[%slide_id%][slide_url]" class="input-text wp-simple-flexslider-slide-url" placeholder="http://">						
 							<textarea name="slideshow[%slide_id%][slide_caption]" class="input-text wp-simple-flexslider-slide-caption" placeholder="<?php _e( 'Describe this slide', 'wp-simple-flexslider' ); ?>"></textarea>							
+							<p class="wp-simple-flexslider-slide-target-blank-wrap">
+								<label for="slideshow_%slide_id%_target_blank">
+									<input id="slideshow_%slide_id%_target_blank" type="checkbox" name="slideshow[%slide_id%][slide_target_blank]" class="wp-simple-flexslider-slide-target-blank" value="1"> <?php _e( 'Open link in new tab', 'wp-simple-flexslider' ); ?>
+								</label>
+							</p>
+
 							<a href="#" class="wp-simple-flexslider-slide-remove button"><?php _e( 'Remove', 'wp-simple-flexslider' ); ?></a>
 						</div>
 					</div>

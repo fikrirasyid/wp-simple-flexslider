@@ -50,7 +50,10 @@ jQuery(document).ready(function($){
 
 				// Prepare input name
 				var name_slide_id 		= "slideshow["+attachment.id+"][slide_id]";
+				var name_slide_url 		= "slideshow["+attachment.id+"][slide_url]";
 				var name_slide_caption 	= "slideshow["+attachment.id+"][slide_caption]";
+				var name_slide_target 	= "slideshow["+attachment.id+"][slide_target_blank]";
+				var id_slide_target 	= "slideshow_"+attachment.id+"_target_blank";
 
 				// Append
 				$('.slides-wrap').append( slide_wrap );
@@ -58,7 +61,10 @@ jQuery(document).ready(function($){
 				// Modify data
 				$('.slides-wrap .wp-simple-flexslider-slide-wrap:last img').attr({ 'src' : attachment.url, 'alt' : attachment.caption });
 				$('.slides-wrap .wp-simple-flexslider-slide-wrap:last .wp-simple-flexslider-slide-id').attr({ 'name' : name_slide_id, 'value' : attachment.id });
+				$('.slides-wrap .wp-simple-flexslider-slide-wrap:last .wp-simple-flexslider-slide-url').attr({ 'name' : name_slide_url });
 				$('.slides-wrap .wp-simple-flexslider-slide-wrap:last .wp-simple-flexslider-slide-caption').attr({ 'name' : name_slide_caption, 'value' : attachment.caption });
+				$('.slides-wrap .wp-simple-flexslider-slide-wrap:last .wp-simple-flexslider-slide-target-blank-wrap label').attr({ 'for' : id_slide_target });
+				$('.slides-wrap .wp-simple-flexslider-slide-wrap:last .wp-simple-flexslider-slide-target-blank').attr({ 'id' : id_slide_target, 'name' : name_slide_target });
 
 				// Hide no slide notice
 				$('.no-wp-simple-flexslider-slide-notice').hide();

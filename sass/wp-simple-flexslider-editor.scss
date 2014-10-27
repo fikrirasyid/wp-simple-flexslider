@@ -60,9 +60,15 @@
 			padding: 10px;			
 		}
 
+		.wp-simple-flexslider-slide-url,
 		.wp-simple-flexslider-slide-caption{
 			width: 100%;
+			margin-bottom: 5px;
 			resize: none;
+		}
+
+		.wp-simple-flexslider-slide-target-blank-wrap{
+			margin: 0;
 		}
 
 		.wp-simple-flexslider-slide-remove{

@@ -48,9 +48,14 @@
   position: relative;
   padding: 10px;
 }
+#slideshow-metabox .wp-simple-flexslider-slide-actions .wp-simple-flexslider-slide-url,
 #slideshow-metabox .wp-simple-flexslider-slide-actions .wp-simple-flexslider-slide-caption {
   width: 100%;
+  margin-bottom: 5px;
   resize: none;
+}
+#slideshow-metabox .wp-simple-flexslider-slide-actions .wp-simple-flexslider-slide-target-blank-wrap {
+  margin: 0;
 }
 #slideshow-metabox .wp-simple-flexslider-slide-actions .wp-simple-flexslider-slide-remove {
   margin-top: 10px;
