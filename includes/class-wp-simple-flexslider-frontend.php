@@ -44,8 +44,16 @@ class WP_Simple_Flexslider_Frontend{
 	 */
 	public function register_shortcode ( $atts ) {
 		$args = shortcode_atts( array(
-			'id' => false
+			'id' 	=> false,
+			'name' 	=> false
 		), $atts );
+
+		/**
+		 * If user provides name and no ID define, find name first
+		 */
+		if( $this->has_value( $args['name'] ) && ! $this->has_value( $args['id'] ) ){
+			$args['id'] = $this->get_id_by_slug( $args['name'] );
+		}
 
 		if( $args['id'] ){
 
@@ -133,6 +141,37 @@ class WP_Simple_Flexslider_Frontend{
 
 		if( $variable && '' != $variable ){
 			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Get slide id by name
+	 * 
+	 * @access public
+	 * @since 0.1
+	 * @param string 	slide name
+	 * @return int 		slide ID
+	 */
+	public function get_id_by_slug( $name = false ){
+
+		if( $name ){
+			global $wpdb;
+
+			$query = $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_status = 'publish' AND post_type = 'wp_simple_flexslider' AND post_title = %s", $name );
+
+			$post = $wpdb->get_row( $query );
+
+			if( isset( $post->ID ) ){
+
+				return $post->ID;
+
+			} else {
+
+				return false;
+
+			}
 		} else {
 			return false;
 		}
