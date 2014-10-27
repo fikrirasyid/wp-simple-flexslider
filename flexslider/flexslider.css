@@ -273,6 +273,7 @@ html[xmlns] .flexslider .slides {
 }
 .wp-simple-flexslider .slide-item {
   display: block;
+  line-height: 0;
 }
 .wp-simple-flexslider .slide-item img {
   width: 100%;
