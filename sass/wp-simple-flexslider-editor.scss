@@ -1,0 +1,94 @@
+// Mixins
+@import "mixins";
+
+// Styling
+#slideshow-metabox{
+	.inside{
+		padding: 15px 10px 10px;
+	}
+
+	.slides-wrap{
+		@include clearfix;
+	}
+
+	.wp-simple-flexslider-slide-wrap{
+		margin-bottom: 20px;		
+		width: 100%;
+		border: 1px solid #efefef;
+		display: inline-block;
+		background: white;
+		box-shadow: 0 1px 2px #f9f9f9;
+		float:left;
+		position: relative;
+
+		&.active{
+			.slide{
+				position: relative;
+				z-index: 1100;
+			}
+		}
+	}
+
+	.slide{
+		position: relative;
+		float: left;
+		width: 40%;
+
+		.wp-simple-flexslider-inside{
+			display: block;
+			border-right: 1px solid #dfdfdf;
+		}
+
+		img{
+			width: 100%;
+			display: block;
+		}
+	}
+
+	.wp-simple-flexslider-slide-fields{
+		display: none;
+	}
+
+	.wp-simple-flexslider-slide-actions{
+		position: relative;
+		float: left;
+		width: 59%;
+
+		.wp-simple-flexslider-inside{
+			display: block;
+			position: relative;
+			padding: 10px;			
+		}
+
+		.wp-simple-flexslider-slide-caption{
+			width: 100%;
+			resize: none;
+		}
+
+		.wp-simple-flexslider-slide-remove{
+			margin-top: 10px;
+		}
+	}
+
+	.no-wp-simple-flexslider-slide-notice{
+		display: block;
+		border: 3px dashed #cfcfcf;
+		color: #bfbfbf;
+		padding: 20px;
+		text-align: center;
+		margin: 0;
+
+		p{
+			margin: 0;
+			font-size: 18px;
+		}
+	}
+
+	.slides-actions{
+		padding: 20px 0 0px;
+
+		a{
+			margin-right: 10px;
+		}
+	}
+}
