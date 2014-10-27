@@ -17,8 +17,6 @@ class WP_Simple_Flexslider_Editor{
 		add_action( 'admin_print_styles', 									array( $this, 'enqueue_scripts' ) );	
 		add_action( 'add_meta_boxes', 										array( $this, 'register_meta_box' ) );	
 		add_action( 'save_post', 											array( $this, 'save_meta_box' ) );
-		add_action( 'wp_ajax_wp_simple_flexslider_product_finder', 			array( $this, 'endpoint_product_finder' ) );
-		add_action( 'wp_ajax_nopriv_wp_simple_flexslider_product_finder', 	array( $this, 'endpoint_product_finder' ) );
 	}
 
 	/**
@@ -211,50 +209,6 @@ class WP_Simple_Flexslider_Editor{
 		} else {
 			update_post_meta( $post_id, "{$this->prefix}data", $_POST['slideshow'] ); 			
 		}
-	}
-
-	/**
-	 * Product finder endpoint
-	 * 
-	 * @access public
-	 * 
-	 * @return void  echoing json output
-	 */
-	public function endpoint_product_finder(){
-
-		$output = array();
-
-		if( isset( $_REQUEST['keyword'] ) && isset( $_REQUEST['_n'] ) && '' != $_REQUEST['keyword'] ){
-
-			/**
-			 * Verify nonce
-			 */
-			if( wp_verify_nonce( $_REQUEST['_n'], 'product_finder_nonce' ) ){
-
-				$args = array(
-					'post_status' 			=> 'publish',
-					'post_type'				=> 'product',
-					'edit_posts_per_page' 	=> 10,
-					's'						=> sanitize_text_field( $_REQUEST['keyword'] )
-				);
-
-				$posts = get_posts( $args );
-
-				if( $posts ){
-
-					foreach ( $posts as $post ) {
-						$output[] = array(
-							'id' 	=> $post->ID,
-							'text'	=> $post->post_title
-						);
-					}
-				}
-			}
-		}
-
-		echo json_encode( $output );
-
-		die();
 	}
 }
 new WP_Simple_Flexslider_Editor;
