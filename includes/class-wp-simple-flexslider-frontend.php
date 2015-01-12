@@ -79,6 +79,9 @@ class WP_Simple_Flexslider_Frontend{
 
 		$slideshow = get_post_meta( $post_id, "{$this->prefix}data", true );
 
+		// Making slide filterable
+		$slideshow = apply_filters( 'wp_simple_flexslider_slideshow_data', $slideshow, $post_id );
+
 		$defaults_slide = array(
 			'slide_id' 			 => false,
 			'slide_url' 		 => false,
