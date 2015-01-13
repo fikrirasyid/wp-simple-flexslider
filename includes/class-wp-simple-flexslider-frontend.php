@@ -121,6 +121,9 @@ class WP_Simple_Flexslider_Frontend{
 
 						echo "<img src='{$slide_image['0']}' alt='{$slide['slide_caption']}' />";
 
+						// Enabling add-on / theme to display additionals stuff inside the slide
+						do_action( 'wp_simple_flexslider_slide_item', $slide, $post_id );
+
 					echo "</{$tag}>";
 				}
 
